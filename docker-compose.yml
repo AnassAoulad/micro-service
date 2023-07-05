@@ -1,0 +1,44 @@
+version: "3"
+services:
+  category_service:
+    build: ./category-service
+    volumes: 
+      - ./category-service/:/usr/src/app/
+    ports:
+      - "4600:4600"
+    expose:
+      - "4600"
+    networks:
+      - my-network
+  book_service:
+    build: ./book-service
+    volumes: 
+      - ./book-service/:/usr/src/app/
+    ports:
+      - "4400:4400"
+    expose:
+      - "4400"
+    networks:
+      - my-network
+  author_service:
+    build: ./author-service
+    volumes: 
+      - ./author-service/:/usr/src/app/
+    ports:
+      - "4500:4500"
+    expose:
+      - "4500"
+    networks:
+      - my-network
+  eventbus-service:
+      build: ./eventbus-service
+      volumes: 
+        - ./eventbus-service/:/usr/src/app/
+      ports:
+        - "7000:7000"
+      expose:
+        - "7000"
+      networks:
+      - my-network
+networks:
+  my-network:
